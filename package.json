@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/osu-cs290-sp20/handlebars-templating#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "handlebars": "^4.7.6"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
