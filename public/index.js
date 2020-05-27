@@ -1,23 +1,33 @@
 function createPhotoCard(photoURL, caption) {
 
-  var photoCardSection = document.createElement('section');
-  photoCardSection.classList.add('photo-card');
+  var photoCardContext = {
+    url: photoURL,
+    caption: caption
+  };
 
-  var imgContainerDiv = document.createElement('div');
-  imgContainerDiv.classList.add('img-container');
-  photoCardSection.appendChild(imgContainerDiv);
+  var photoCardHtml = Handlebars.templates.photoCard(photoCardContext);
+  console.log("== photoCardHtml:", photoCardHtml);
 
-  var img = document.createElement('img');
-  img.classList.add('person-photo-img');
-  img.src = photoURL;
-  imgContainerDiv.appendChild(img);
+  return photoCardHtml;
 
-  var captionDiv = document.createElement('div');
-  captionDiv.classList.add('caption');
-  captionDiv.textContent = caption;
-  photoCardSection.appendChild(captionDiv);
+  // var photoCardSection = document.createElement('section');
+  // photoCardSection.classList.add('photo-card');
+  //
+  // var imgContainerDiv = document.createElement('div');
+  // imgContainerDiv.classList.add('img-container');
+  // photoCardSection.appendChild(imgContainerDiv);
+  //
+  // var img = document.createElement('img');
+  // img.classList.add('person-photo-img');
+  // img.src = photoURL;
+  // imgContainerDiv.appendChild(img);
+  //
+  // var captionDiv = document.createElement('div');
+  // captionDiv.classList.add('caption');
+  // captionDiv.textContent = caption;
+  // photoCardSection.appendChild(captionDiv);
 
-  return photoCardSection;
+  // return photoCardSection;
 
 }
 
@@ -33,7 +43,10 @@ function handleModalAcceptClick() {
 
     var newPhotoCard = createPhotoCard(photoURL, caption);
     var photoCardContainer = document.querySelector('.photo-card-container');
-    photoCardContainer.appendChild(newPhotoCard);
+
+    // photoCardContainer.appendChild(newPhotoCard);
+    photoCardContainer.insertAdjacentHTML('beforeend', newPhotoCard);
+
     hideModal();
 
   }
